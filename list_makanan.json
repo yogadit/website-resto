@@ -1,0 +1,19 @@
+{
+    "listOfFoods": [
+      {
+        "food": "Ayam Goreng"
+      },
+      {
+        "food": "Nasi Bakar"
+      },
+      {
+        "food": "Roti Bakar"
+      },
+      {
+        "food": "Sate"
+      },
+      {
+        "food": "Kambing Guling"
+      }
+    ]
+}

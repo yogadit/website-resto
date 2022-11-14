@@ -1,0 +1,444 @@
+/* General */
+* {
+  scroll-behavior: smooth;
+  font-family:  "Trebuchet MS", Helvetica, sans-serif;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.col {
+  padding: 50px 0px 50px 0px;
+}
+
+/* Navbar */
+.navbar {
+  overflow: hidden;
+  background-color: rgb(0, 0, 0);
+  position: fixed;
+  top: 0%;
+  width: 100%;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+  
+.navbar a:hover {
+  background: lightgrey;
+  color: black;
+}
+
+/* Home */
+.bg {
+  background-image: url("images/AyamBakar.jpg");
+  height: 100%; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: contrast(50%);
+}
+
+.bg-text {
+    background-color: rgba(0, 0, 0, 0.534);
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 80%;
+    padding: 20px;
+    text-align: center;
+}
+
+.bg-textBtn {
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 80%;
+    padding: 20px;
+    text-align: center;
+}
+
+.btnHeader {
+    background-color: rgb(43, 36, 36);
+    color: white;
+    font-size: 25px;
+    padding: 12px 32px;
+    border-radius: 15px;
+    text-decoration: none;
+}
+
+.btnHeader:hover {
+    background-color: white;
+    color: black;
+    border: black;
+    border-width: 10px;
+}
+
+/* Form */
+.custombg {
+  padding: 5px;
+  margin-top: 2px;
+  margin-left: 0.5%;
+  border: solid black;
+  border-radius: 15px;
+  align-self: center;
+  min-width: 1px;
+}
+
+.cleaninput {
+  border: none;
+  font-size: 14px;
+  padding-left: 10px;
+  margin: auto;
+}
+.cleaninput:focus {
+  outline: none;
+}
+
+#editMakanan {
+  border: solid black;
+  border-radius: 15px;
+  padding: 5px;
+  padding-left: 10px;
+}
+
+/* Menu */
+.styled-table {
+    border-collapse: collapse;
+    font-size: 20px;
+    font-family: sans-serif;
+    min-width: 700px;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.styled-table thead tr {
+    background-color: rgb(37, 35, 35);;
+    color: #ffffff;
+    text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+    text-align: center;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;    
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid rgb(37, 35, 35);
+    border-radius: 5px;
+}
+
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: rgb(37, 35, 35);;
+}
+
+.btnRandom {
+    background-color: black;
+    color: white;
+    font-size: 25px;
+    padding: 12px 32px;
+    border-color: solid white;
+    border-width: 4px;
+    border-radius: 15px;
+    text-decoration: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+.btnRandom:hover {
+    background-color: white;
+    color: black;
+}
+
+/* button */
+.button {
+    background-color: black; 
+    border: none;
+    border-radius: 4px;
+    color: black;
+    padding: 3px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    margin: 2px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  
+  .button1 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid black;
+  }
+  
+  .button1:hover {
+    background-color: black;
+    color: white;
+  }
+
+  .button2 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid black;
+  }
+
+  .button2:hover {
+    background-color: black;
+    color: white;
+  }
+
+/* About Us */
+.warnain{
+  background-color: rgb(37, 35, 35);
+  color: white;
+  align-content: center;
+}
+
+/* About Us - Card */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: white;
+  width: 300px;
+  margin: 30px;
+  
+  text-align: center;
+  font-family: arial;
+  display: inline-block;
+  color: black;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+.buttonPro {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color:black;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+/* Footer */
+footer{
+  top: 50%;
+  text-align: center;
+  bottom: 50%;
+  height: 20px;
+  padding-bottom : 26px;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  /* General */
+  
+  /* Home */
+  .bg-text {
+    font-size: 20px;
+  }
+
+  .btnHeader {
+      font-size: 15px;
+      padding: 9px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+  } 
+
+  /* Form */
+  .styled-table {
+    border-collapse: collapse;
+    font-size: 20px;
+    font-family: sans-serif;
+    min-width: 200px;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+  }
+
+  .styled-table th,
+  .styled-table td {
+      padding: 6px 8px;
+      text-align: center;
+  }
+
+  .navbar {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  /* About Us */
+  .card {
+    margin: 10px;
+    left: 50% ;
+    text-align: center;
+    display: inline-block;
+  }
+
+  #editMakanan{
+    padding : 3px;
+  }
+}
+
+@media screen and (max-width: 444px) {
+  /* General */
+  * {
+    margin-right: 0px;
+  }
+  /* Home */
+  .bg-text {
+    font-size: 10px;
+  }
+
+  .btnHeader {
+      font-size: 10px;
+      padding: 9px 17px;
+      border-radius: 10px;
+      text-decoration: none;
+  } 
+
+  /* Form */
+  .styled-table {
+    border-collapse: collapse;
+    font-size: 20px;
+    font-family: sans-serif;
+    width: auto;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+  }
+
+  .styled-table th,
+  .styled-table td {
+      padding: 6px 8px;
+      text-align: center;
+  }
+
+  .navbar {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  #editMakanan{
+    padding : 3px;
+  }
+/* 
+  .modal{
+    max-width:30%;
+  }
+
+  .modal-content{
+     max-width: 10%;
+  } */
+
+  /* About Us */
+  .card {
+    margin: 10px;
+    width: auto;
+    max-width: 300px;
+    left: 50%;
+    text-align: center;
+    font-size: 3.5vmin;
+    display: inline-block;
+  }
+  .title {
+    font-size: 3.5vmin;
+  }
+}
+
+/* Modal Content */
+.modal {
+  display: none; 
+  position: fixed; 
+  /* z-index: 1;  */
+  padding-top: 100px; 
+  left: 25%;
+  top: 0%;
+  width: 50%; 
+  height: 100%; 
+}
+
+.modal-content {
+  background-color: #fefefe;
+  border-radius: 10px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  size: 30px;
+  animation-name: modalSlideUp;
+  animation-duration: 0.5s;
+  
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@keyframes modalSlideUp {
+  0% {
+    transform: translateY(1500px); 
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}

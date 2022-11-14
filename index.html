@@ -1,99 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restoran Lambat Saji</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="main.css">
-    <script src="script.js"></script>
+	<title>Restoran Tukang Bakar</title>
+
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
-    <header>
-        <ul>
-            <li><a class="active" href="#home">Home</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#form">Form</a></li>
-        </ul><br>
-    </header>
+<body onload="fetchJson()">
+	<div class="navbar">
+		<a href="#home">Home</a>
+		<a href="#menu">Menu</a>
+		<a href="#aboutus">About Us</a>
+	</div>
 
-    <div class="col-10">
-        <div id="gallery" style="center">
-            <div class="gallery">
-            <a>
-                <img src="images/AyamBakar.jpg" alt="Foto Ayam Bakar" width="600" height="400">
-            </a>
-            <div class="desc">Ayam Bakar</div>
-            </div>
+	<div id="home" class="bg"></div>
+	<div class="bg-text">
+		<h1>Welcome to</h1>
+		<h2>Restoran Tukang Bakar</h2>
+	</div>
+	<div class="bg-textBtn">
+		<a href="#menu" class="btnHeader">View Menu</a>
+	</div>
 
-            <div class="gallery">
-            <a>
-                <img src="images/NasiCampur.jpeg" alt="Foto Nasi Campur" width="600" height="400">
-            </a>
-            <div class="desc">Nasi Campur</div>
-            </div>
+	<div id="menu" class="col">
+		<h1 align="center">Data Makanan</h1>
 
-            <div class="gallery">
-            <a>
-                <img src="images/RotiBakar.jpeg" alt="Foto Roti Bakar" width="600" height="400">
-            </a>
-            <div class="desc">Roti Bakar</div>
-            </div>
-        </div>
-        
-        <div id=form>
-            <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
-            <input type="text" id="newMakanan" name="newMakanan" placeholder="Input nama makanan" />
-            <div class="addNew"><input type="submit" value="CREATE" /></div>
-            </form>
-            <br /><br />
-            
-            <h3>List Makanan</h3>
-            <table id="listMakanan">
-            <thead>
-                <tr>
-                <th>No</th>
-                <th>Nama Makanan</th>
-                <th>Action</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-            </table>
-
-            <button class="randomize" onclick="random()">RANDOMIZE</button>
-
-            <br /><br />
-
-            <table>
-            <tr>
-                <td>BREAKFAST</td>
-                <td>:</td>
-                <td id=demo>__________________________</td>
-            </tr>
-            <tr>
-                <td>LUNCH</td>
-                <td>:</td>
-                <td>__________________________</td>
-            </tr>
-            <tr>
-                <td>DINNER</td>
-                <td>:</td>
-                <td>__________________________</td>
-            </tr>
-            </table>
-        <!-- The Modal -->
-        <div id="myModal" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <form onsubmit="event.preventDefault();updateSubmit();" autocomplete="off">
-            <input type="text" id="editMakanan" name="editMakanan" placeholder="Input nama makanan" />
-            <div class="addNew"><input type="submit" value="EDIT" /></div>
-            </form>
-        </div>
-        </div>
-     
+		<div align="center">
+			<h2 style="display: inline-block" align="center">List Makanan</h2>
+			<div class="custombg" style="display:inline-block">
+				<form action="javascript:void(0);" autocomplete="off" method="POST">
+					<input type="text" id="newMakanan" class="cleaninput" placeholder="Input Nama Makanan" />
+          <button class="button button1" style="float:right" onclick="Add()">Add Menu</button>
+        </form>
+      </div>
     </div>
+
+    <p id="counter" align="center" style="display:none"></p>
+    <table id="listMakanan" class="styled-table" >
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Nama Makanan</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="makanan"></tbody>
+    </table>
+  </div>
+
+  <div align="center">
+    <button class="btnRandom" align="center" onclick="random(list)">RANDOMIZE</button>
+  </div>
+
+  <div class="col">
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Jam Makan</th>
+           <th></td>
+          <th>Menu Acak</th>
+        </tr>
+      </thead>
+      <tr>
+        <th>BREAKFAST</td>
+        <th>:</td>
+        <td id=ubah1>-</th>
+      </tr>
+      <tr>
+        <th>LUNCH</td>
+        <th>:</td>
+        <td id=ubah2>-</th>
+      </tr>
+      <tr>
+        <th>DINNER</th>
+        <th>:</th>
+        <td id=ubah3>-</th>
+      </tr>
+    </table>
+  </div>
+
+  <div class="modal fade" id="spoiler" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header" >
+          <span class="close" id="close">&times;</span>
+          <h3 class="modal-title" align="center" >Edit</h3>
+        </div>
+        <form onsubmit="event.preventDefault();" action="javascript:void(0);" method="POST" autocomplete="off" id="saveEdit"> 
+            <input type="text" id="editMakanan"/>
+            <button type="submit" class="button button1" style="float:right" data-dismiss="modal">Edit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="aboutus" align="center" class="col warnain center">
+    <h1 align="center">About Us</h1>
+    <div class="container">
+      <div class="card">
+        <img src="images/pao.png" alt="Aldo" style="width:100%">
+        <h1>Putra Aldo Oswald</h1>
+        <p class="title">00000044541</p>
+        <p>Informatika 2020</p>
+        <p><button class="buttonPro"></button></p>
+      </div>
+
+      <div class="card">
+        <img src="images/kevin.png" alt="Kevin" style="width:100%">
+        <h1>Kevin Gleneagles</h1>
+        <p class="title">00000053107</p>
+        <p>Informatika 2020</p>
+        <p><button class="buttonPro"></button></p>
+      </div>
+
+      <div class="card">
+        <img src="images/yoga.png" alt="Yoga" style="width:100%">
+        <h1>Yoga Aditiya</h1>
+        <p class="title">00000043814</p>
+        <p>Informatika 2020</p>
+        <p><button class="buttonPro"></button></p>
+      </div>
+
+      <div class="card">
+        <img src="images/jo.png" alt="Nathan" style="width:100%">
+        <h1>Jonathan Octavien</h1>
+        <p class="title">00000044495</p>
+        <p>Informatika 2020</p>
+        <p><button class="buttonPro"></button></p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <h3>UTS Pengenalan Teknologi Internet Semester Ganjil 2021</h3>
+  </footer>
+
+  <script type="text/javascript" src="script.js"></script>
+
 </body>
 </html>

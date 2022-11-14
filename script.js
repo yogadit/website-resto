@@ -1,108 +1,156 @@
-var selectedRow = null;
+var list = [];
+var tabel = document.getElementById('makanan');
+window.onload = FetchAll();
 
-function onFormSubmit() {
-  if (validate()) {
-    var formData = readFormData();
-    if (selectedRow == null) insertNewRecord(formData);
-    resetForm();
-  }
-}
-function updateSubmit() {
-  if (validateEditMakanan()) {
-    var formData = readFormSubmitData();
-    updateRecord(formData);
-    resetFormEdit();
-  }
-}
-function readFormData() {
-  var formData = {};
-  formData["newMakanan"] = document.getElementById("newMakanan").value;
-  return formData;
-}
-
-function readFormSubmitData() {
-  var formData = {};
-  formData["editMakanan"] = document.getElementById("editMakanan").value;
-  return formData;
-}
-
-function insertNewRecord(data) {
-  var table = document.getElementById("listMakanan").getElementsByTagName("tbody")[0];
-  var newRow = table.insertRow(table.length);
-  cell1 = newRow.insertCell(0);
-  cell1.innerHTML = "1";
-  cell2 = newRow.insertCell(1);
-  cell2.innerHTML = data.newMakanan;
-  cell3 = newRow.insertCell(2);
-  cell3.innerHTML = `<button onClick="onEdit(this)">Edit</button>
-                       <button onClick="onDelete(this)">Delete</button>`;
-}
-
-function resetForm() {
-  document.getElementById("newMakanan").value = "";
-  selectedRow = null;
-}
-
-function resetFormEdit() {
-  document.getElementById("editMakanan").value = "";
-  selectedRow = null;
-}
-
-function onEdit(td) {
-  var modal = document.getElementById("myModal");
-
-
-  var span = document.getElementsByClassName("close")[0];
-
-  modal.style.display = "block";
-
-  span.onclick = function () {
-    modal.style.display = "none";
-  };
-
-
-  window.onclick = function (event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
+function fetchJson(){
+var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      if(!localStorage.getItem("list_makanan_localstorage") == true){
+        localStorage.setItem("list_makanan_localstorage", xhttp.responseText);
+        FetchAll();
+      }
     }
   };
-  selectedRow = td.parentElement.parentElement;
-  document.getElementById("editMakanan").value = selectedRow.cells[1].innerHTML;
-}
-function updateRecord(formData) {
-  selectedRow.cells[1].innerHTML = formData.editMakanan;
+
+  xhttp.open("GET", "list_makanan.json", true);
+  xhttp.send();
 }
 
-function onDelete(td) {
-  if (confirm("Are you sure to delete this record ?")) {
-    row = td.parentElement.parentElement;
-    document.getElementById("listMakanan").deleteRow(row.rowIndex);
-    resetForm();
-  }
+function addJson(){
+let listOfFoods = [];
+for(let i= 0; i < list.length; i++){
+  listOfFoods[i] = {"food" : list[i]};
 }
-function validate() {
-  isValid = true;
-  if (document.getElementById("newMakanan").value == "") {
-    isValid = false;
-    alert("Please insert a name");
-  } else {
-    isValid = true;
-  }
-  return isValid;
+let listMakananMauDikirim = []
+listMakananMauDikirim = {listOfFoods : listOfFoods};
+
+let listMakananLocalStorage = JSON.stringify(listMakananMauDikirim, null, 2);
+localStorage.setItem("list_makanan_localstorage", listMakananLocalStorage);
 }
 
-function validateEditMakanan() {
-  isValid = true;
-  if (document.getElementById("editMakanan").value == "") {
-    isValid = false;
-    alert("Please insert a name");
-  } else {
-    isValid = true;
-  }
-  return isValid;
+function Count() {
+    var jumlah = document.getElementById('counter');
+    var name = 'food';
+
+    if (list.length) {
+        if (list.length > 1) {
+            name = 'foods';
+        }
+        jumlah.innerHTML = list.length + ' ' + name ;
+    } else {
+        jumlah.innerHTML = 'No ' + name;
+    }
 }
 
-function random() {
-  var x = Math.floor((Math.random() * i) + 1);
-  document.getElementById("demo").innerHTML = x;
+function FetchAll() {
+    let listMakananLocalStorage = localStorage.getItem("list_makanan_localstorage");
+        let listMakanan = JSON.parse(listMakananLocalStorage);
+        let foods = listMakanan.listOfFoods;
+        for (let i = 0; i < foods.length; i++) {
+            list[i] = foods[i].food;
+        }
+    var data = '';
+    fetchJson();
+    if (list.length > 0) {
+        for (i = 0; i < list.length; i++) {
+            data += '<tr>';
+            data += '<td>' + (i+1) + '</td>';
+            data += '<td>' + list[i] + '</td>';
+            data += '<td><button class="button button1" onclick="Edit(' + i + ')">Edit</button> <button class="button button1" onclick="Delete(' + i + ')">Delete</button></td>';
+            data += '</tr>';
+
+        }
+    }
+    Count(list.length);
+    tabel.innerHTML = data;
+}
+
+function Add() {
+    el = document.getElementById('newMakanan');
+    var makanan = el.value;
+
+    if (makanan) {
+        list.push(makanan.trim());
+        el.value = '';
+        addJson();
+        FetchAll();
+    }
+    alert("Makanan Berhasil Ditambahkan");
+}
+
+function Edit(item) {
+    var el = document.getElementById('editMakanan');
+    el.value = list[item];
+    var modal = document.getElementById('spoiler');
+    self = list;
+
+    var span = document.getElementById("close");
+    modal.style.display = 'block'
+
+    span.onclick = function () {
+        modal.style.display = "none";
+    };
+
+    window.onclick = function (event) {
+        if (event.target == modal) {
+        modal.style.display = "none";
+        }
+    };
+  
+
+    document.getElementById('saveEdit').onsubmit = function() {
+        var makanan = el.value;
+
+        if (makanan) {
+            self.splice(item, 1, makanan.trim());
+            addJson();
+            self = FetchAll();
+            CloseInput();
+            alert("Makanan Berhasil Diubah");
+        }
+    }
+  
+}
+
+function CloseInput() {
+    document.getElementById('spoiler').style.display = 'none';
+}
+
+function Delete (item){
+    if (confirm("Are you sure to delete this record ?")){
+        list.splice(item, 1);
+        addJson();
+        FetchAll();
+    }
+}
+
+FetchAll();
+
+function random(makanan) {
+  var i = makanan.length;
+  if(i>=3){
+    var x = doRandom(i);
+    var y = doRandom(i);
+    while (y==x){
+      y = doRandom(i);
+    }
+    var z = doRandom(i);
+    while (z==y || z==x){
+      z = doRandom(i);
+    }
+  } else{
+    var x = doRandom(i);
+    var y = doRandom(i);
+    var z = doRandom(i);
+  }
+
+  document.getElementById("ubah1").innerHTML = makanan[x];
+  document.getElementById("ubah2").innerHTML = makanan[y];
+  document.getElementById("ubah3").innerHTML = makanan[z];
+}
+
+function doRandom(i){
+  let nilai = (Math.floor((Math.random() * i) + 0));
+  return nilai;
 }
