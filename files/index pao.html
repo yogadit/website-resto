@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <script src="script.js"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li><a class="active" href="#home">Home</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#form">Form</a></li>
+    </ul><br>
+
+    <div id=welcome>
+        <h1>Irashaimasee ini perlu dibuat estetik</h1>
+    </div>
+
+    <div id=gallery>
+        <div class="col-12 center padding-8">
+            <h2 class="besar center">Galeri Makanan</h2>
+        </div>
+        <div class="center container">
+            <img class ="container zoom" src="http://lorempixel.com/200/200/sports/2" width="200" height="200/">
+            <img class ="container zoom" src="http://lorempixel.com/200/200/sports/2" width="200" height="200/">
+            <img class ="container zoom" src="http://lorempixel.com/200/200/sports/2" width="200" height="200/">
+            <img class ="container zoom" src="http://lorempixel.com/200/200/sports/2" width="200" height="200/">
+        </div>
+    </div>
+
+   
+    <div id=form>
+        <fieldset>
+                <input type="text" id="newMakanan" name="newMakanan" placeholder="Input nama makanan">
+                <input type="button" class="addnew" onclick="onFormSubmit()" value="insert">
+            </fieldset>
+
+            <h3>Data Makanan</h3>
+            <table>
+                <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Makanan</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody id="tabelMenu"></tbody>
+            </table>
+
+            <br><br>
+            <button class="randomize">RANDOMIZE</button>
+            <br><br>
+
+            <table>
+                <tr>
+                    <td>BREAKFAST</td>
+                    <td>:</td>
+                    <td>__________________________</td>
+                </tr>
+                <tr>
+                    <td>LUNCH</td>
+                    <td>:</td>
+                    <td>__________________________</td>
+                </tr>
+                <tr>
+                    <td>DINNER</td>
+                    <td>:</td>
+                    <td>__________________________</td>
+                </tr>
+            </table>
+    </div>
+
+    <script type="text/javacript">
+        function tambahMenu
+    </script>
+
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <form onsubmit="event.preventDefault();onFormSubmit2();" autocomplete="off">
+          <input type="text" id="editMakanan" name="editMakanan" placeholder="Input nama makanan" />
+          <div class="addNew"><input type="submit" value="EDIT" /></div>
+        </form>
+      </div>
+    </div>
+
+</body>
+</html>

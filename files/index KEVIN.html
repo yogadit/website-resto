@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DATA MAKANAN</title>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <script type="text/javascript" src="script.js"></script>
+  </head>
+  <body>
+    <header>
+      <h2>DATA MAKANAN</h2>
+    </header>
+
+    <br /><br />
+    <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
+      <input type="text" id="newMakanan" name="newMakanan" placeholder="Input nama makanan" />
+      <div class="addNew"><input type="submit" value="CREATE" /></div>
+    </form>
+    <br /><br />
+
+    <h3>List Makanan</h3>
+    <table id="listMakanan">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Nama Makanan</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <br /><br />
+
+    <button class="randomize">RANDOMIZE</button>
+
+    <br /><br />
+
+    <table>
+      <tr>
+        <td>BREAKFAST</td>
+        <td>:</td>
+        <td>__________________________</td>
+      </tr>
+      <tr>
+        <td>LUNCH</td>
+        <td>:</td>
+        <td>__________________________</td>
+      </tr>
+      <tr>
+        <td>DINNER</td>
+        <td>:</td>
+        <td>__________________________</td>
+      </tr>
+    </table>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <form onsubmit="event.preventDefault();onFormSubmit2();" autocomplete="off">
+          <input type="text" id="editMakanan" name="editMakanan" placeholder="Input nama makanan" />
+          <div class="addNew"><input type="submit" value="EDIT" /></div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+[
+    "Ayam Goreng", 
+    "Nasi campur", 
+    "Roti Bakar"
+]
+
+// {
+//     "namaMakanan":[
+//           {"name": "Ayam Goreng"},
+//           {"name": "Nasi campur"},
+//           {"name": "Roti Bakar"}
+//     ]
+// }
